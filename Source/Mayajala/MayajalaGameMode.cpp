@@ -1,7 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "MayajalaGameMode.h"
-#include "MayajalaCharacter.h"
+#include "Character/MayajalaCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
 AMayajalaGameMode::AMayajalaGameMode()

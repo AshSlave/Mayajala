@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "MayajalaCharacterBase.h"
+#include "Character/MayajalaCharacterBase.h"
 
 // Sets default values
 AMayajalaCharacterBase::AMayajalaCharacterBase()
