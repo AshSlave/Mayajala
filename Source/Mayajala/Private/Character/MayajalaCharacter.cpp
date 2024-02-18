@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright AshSlave
 
 #include "Character/MayajalaCharacter.h"
 #include "Engine/LocalPlayer.h"

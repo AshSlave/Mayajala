@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright AshSlave
 
 #include "Mayajala.h"
 #include "Modules/ModuleManager.h"

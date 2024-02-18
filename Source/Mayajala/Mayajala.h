@@ -1,5 +1,7 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright AshSlave
 
 #pragma once
 
 #include "CoreMinimal.h"
+
+#define CUSTOM_DEPTH_PURPLE 253
