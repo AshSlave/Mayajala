@@ -1,6 +1,9 @@
 // Copyright AshSlave
 
 #include "Character/MayajalaCharacter.h"
+#include "Player/MayajalaPlayerState.h"
+#include "AbilitySystem/MayajalaAbilitySystemComponent.h"
+#include "AbilitySystem/MayajalaAttributeSet.h"
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -54,77 +57,102 @@ AMayajalaCharacter::AMayajalaCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
-void AMayajalaCharacter::BeginPlay()
+void AMayajalaCharacter::PossessedBy(AController* NewController)
 {
-	// Call the base class  
-	Super::BeginPlay();
+    Super::PossessedBy(NewController);
 
-	//Add Input Mapping Context
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
-	{
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
-		{
-			Subsystem->AddMappingContext(DefaultMappingContext, 0);
-		}
-	}
+    // Init ability actor info for the server
+    InitAbilityActorInfo();
 }
 
-//////////////////////////////////////////////////////////////////////////
-// Input
-
-void AMayajalaCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AMayajalaCharacter::OnRep_PlayerState()
 {
-	// Set up action bindings
-	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
-		
-		// Jumping
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+    Super::OnRep_PlayerState();
 
-		// Moving
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMayajalaCharacter::Move);
-
-		// Looking
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMayajalaCharacter::Look);
-	}
-	else
-	{
-		UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
-	}
+    // Init ability actor info for the client
+    InitAbilityActorInfo();
 }
 
-void AMayajalaCharacter::Move(const FInputActionValue& Value)
+void AMayajalaCharacter::InitAbilityActorInfo()
 {
-	// input is a Vector2D
-	FVector2D MovementVector = Value.Get<FVector2D>();
-
-	if (Controller != nullptr)
-	{
-		// find out which way is forward
-		const FRotator Rotation = Controller->GetControlRotation();
-		const FRotator YawRotation(0, Rotation.Yaw, 0);
-
-		// get forward vector
-		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-	
-		// get right vector 
-		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-
-		// add movement 
-		AddMovementInput(ForwardDirection, MovementVector.Y);
-		AddMovementInput(RightDirection, MovementVector.X);
-	}
+    AMayajalaPlayerState* MayajalaPlayerState = GetPlayerState<AMayajalaPlayerState>();
+    check(MayajalaPlayerState);
+    AbilitySystemComponent = MayajalaPlayerState->GetAbilitySystemComponent();
+    AttributeSet = MayajalaPlayerState->GetAttributeSet();
+    AbilitySystemComponent->InitAbilityActorInfo(MayajalaPlayerState, this);
 }
 
-void AMayajalaCharacter::Look(const FInputActionValue& Value)
-{
-	// input is a Vector2D
-	FVector2D LookAxisVector = Value.Get<FVector2D>();
-
-	if (Controller != nullptr)
-	{
-		// add yaw and pitch input to controller
-		AddControllerYawInput(LookAxisVector.X);
-		AddControllerPitchInput(LookAxisVector.Y);
-	}
-}
+//void AMayajalaCharacter::BeginPlay()
+//{
+	//// Call the base class  
+	//Super::BeginPlay();
+	//
+	////Add Input Mapping Context
+	//if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	//{
+		//if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
+		//{
+			//Subsystem->AddMappingContext(DefaultMappingContext, 0);
+		//}
+	//}
+//}
+//
+////////////////////////////////////////////////////////////////////////////
+//// Input
+//
+//void AMayajalaCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+//{
+	//// Set up action bindings
+	//if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
+//		
+		//// Jumping
+		//EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
+		//EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+		//
+		//// Moving
+		//EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMayajalaCharacter::Move);
+		//
+		//// Looking
+		//EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMayajalaCharacter::Look);
+	//}
+	//else
+	//{
+		//UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
+	//}
+//}
+//
+//void AMayajalaCharacter::Move(const FInputActionValue& Value)
+//{
+	//// input is a Vector2D
+	//FVector2D MovementVector = Value.Get<FVector2D>();
+	//
+	//if (Controller != nullptr)
+	//{
+		//// find out which way is forward
+		//const FRotator Rotation = Controller->GetControlRotation();
+		//const FRotator YawRotation(0, Rotation.Yaw, 0);
+		//
+		//// get forward vector
+		//const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+//	
+		//// get right vector 
+		//const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+		//
+		//// add movement 
+		//AddMovementInput(ForwardDirection, MovementVector.Y);
+		//AddMovementInput(RightDirection, MovementVector.X);
+	//}
+//}
+//
+//void AMayajalaCharacter::Look(const FInputActionValue& Value)
+//{
+	//// input is a Vector2D
+	//FVector2D LookAxisVector = Value.Get<FVector2D>();
+	//
+	//if (Controller != nullptr)
+	//{
+		//// add yaw and pitch input to controller
+		//AddControllerYawInput(LookAxisVector.X);
+		//AddControllerPitchInput(LookAxisVector.Y);
+	//}
+//}
