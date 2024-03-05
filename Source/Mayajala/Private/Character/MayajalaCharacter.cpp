@@ -4,15 +4,17 @@
 #include "Player/MayajalaPlayerState.h"
 #include "AbilitySystem/MayajalaAbilitySystemComponent.h"
 #include "AbilitySystem/MayajalaAttributeSet.h"
-#include "Engine/LocalPlayer.h"
+//#include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "GameFramework/Controller.h"
-#include "EnhancedInputComponent.h"
-#include "EnhancedInputSubsystems.h"
-#include "InputActionValue.h"
+#include "UI/HUD/MayajalaHUD.h"
+#include "Player/MayajalaPlayerController.h"
+//#include "GameFramework/Controller.h"
+//#include "EnhancedInputComponent.h"
+//#include "EnhancedInputSubsystems.h"
+//#include "InputActionValue.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -80,6 +82,14 @@ void AMayajalaCharacter::InitAbilityActorInfo()
     AbilitySystemComponent = MayajalaPlayerState->GetAbilitySystemComponent();
     AttributeSet = MayajalaPlayerState->GetAttributeSet();
     AbilitySystemComponent->InitAbilityActorInfo(MayajalaPlayerState, this);
+
+    if (AMayajalaPlayerController* MayajalaPlayerController = Cast<AMayajalaPlayerController>(GetController()))
+    {
+        if (AMayajalaHUD* MayajalaHUD = Cast<AMayajalaHUD>(MayajalaPlayerController->GetHUD()))
+        {
+            MayajalaHUD->InitOverlay(MayajalaPlayerController, MayajalaPlayerState, AbilitySystemComponent, AttributeSet);
+        }
+    }
 }
 
 //void AMayajalaCharacter::BeginPlay()

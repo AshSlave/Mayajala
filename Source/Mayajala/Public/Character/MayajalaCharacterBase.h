@@ -11,12 +11,13 @@ class UAbilitySystemComponent;
 class UAttributeSet;
 
 UCLASS()
-class MAYAJALA_API AMayajalaCharacterBase : public ACharacter
+class MAYAJALA_API AMayajalaCharacterBase : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
 public:
 	AMayajalaCharacterBase();
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 protected:
 	virtual void BeginPlay() override;

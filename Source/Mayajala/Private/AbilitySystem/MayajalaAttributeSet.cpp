@@ -6,7 +6,7 @@
 
 UMayajalaAttributeSet::UMayajalaAttributeSet()
 {
-    InitAttention(1.f);
+    InitAttention(0.5f);
     InitMaxAttention(1.f);
     InitAdrenaline(100.f);
     InitMaxAdrenaline(100.f);

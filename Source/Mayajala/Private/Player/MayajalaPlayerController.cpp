@@ -57,8 +57,10 @@ void AMayajalaPlayerController::BeginPlay()
     check(MayajalaContext);
 
     UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-    check(Subsystem);
-    Subsystem->AddMappingContext(MayajalaContext, 0);
+    if (Subsystem)
+    {
+        Subsystem->AddMappingContext(MayajalaContext, 0);
+    }
 
     bShowMouseCursor = true;
     DefaultMouseCursor = EMouseCursor::Default;

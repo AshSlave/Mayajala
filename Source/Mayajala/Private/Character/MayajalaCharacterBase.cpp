@@ -14,6 +14,11 @@ AMayajalaCharacterBase::AMayajalaCharacterBase()
 
 }
 
+UAbilitySystemComponent* AMayajalaCharacterBase::GetAbilitySystemComponent() const
+{
+return AbilitySystemComponent;
+}
+
 void AMayajalaCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
