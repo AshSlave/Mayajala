@@ -10,7 +10,7 @@
 class UAbilitySystemComponent;
 class UAttributeSet;
 
-UCLASS()
+UCLASS(Abstract)
 class MAYAJALA_API AMayajalaCharacterBase : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()

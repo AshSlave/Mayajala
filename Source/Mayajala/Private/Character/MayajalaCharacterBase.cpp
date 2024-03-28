@@ -3,7 +3,6 @@
 
 #include "Character/MayajalaCharacterBase.h"
 
-// Sets default values
 AMayajalaCharacterBase::AMayajalaCharacterBase()
 {
 	PrimaryActorTick.bCanEverTick = false;
@@ -16,7 +15,7 @@ AMayajalaCharacterBase::AMayajalaCharacterBase()
 
 UAbilitySystemComponent* AMayajalaCharacterBase::GetAbilitySystemComponent() const
 {
-return AbilitySystemComponent;
+	return AbilitySystemComponent;
 }
 
 void AMayajalaCharacterBase::BeginPlay()
