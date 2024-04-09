@@ -3,6 +3,7 @@
 
 #include "UI/WidgetController/OverlayWidgetController.h"
 #include "AbilitySystem/MayajalaAttributeSet.h"
+#include "AbilitySystem/MayajalaAbilitySystemComponent.h"
 
 void UOverlayWidgetController::BroadcastInitialValues()
 {
@@ -17,35 +18,46 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 {
     const UMayajalaAttributeSet* MayajalaAttributeSet = CastChecked<UMayajalaAttributeSet>(AttributeSet);
 
-    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(
-        MayajalaAttributeSet->GetAttentionAttribute()).AddUObject(this, &UOverlayWidgetController::AttentionChanged);
+    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate( MayajalaAttributeSet->GetAttentionAttribute()).AddLambda(
+        [this](const FOnAttributeChangeData& Data)
+        {
+            OnAttentionChanged.Broadcast(Data.NewValue);
+        }
+    );
 
-    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(
-        MayajalaAttributeSet->GetMaxAttentionAttribute()).AddUObject(this, &UOverlayWidgetController::MaxAttentionChanged);
+    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate( MayajalaAttributeSet->GetMaxAttentionAttribute()).AddLambda(
+        [this](const FOnAttributeChangeData& Data)
+        {
+            OnMaxAttentionChanged.Broadcast(Data.NewValue);
+        }
+    );
 
-    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(
-        MayajalaAttributeSet->GetAdrenalineAttribute()).AddUObject(this, &UOverlayWidgetController::AdrenalineChanged);
+    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate( MayajalaAttributeSet->GetAdrenalineAttribute()).AddLambda(
+        [this](const FOnAttributeChangeData& Data)
+        {
+            OnAdrenalineChanged.Broadcast(Data.NewValue);
+        }
+    );
 
-    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(
-        MayajalaAttributeSet->GetMaxAdrenalineAttribute()).AddUObject(this, &UOverlayWidgetController::MaxAdrenalineChanged);
-}
+    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate( MayajalaAttributeSet->GetMaxAdrenalineAttribute()).AddLambda(
+        [this](const FOnAttributeChangeData& Data)
+        {
+            OnMaxAdrenalineChanged.Broadcast(Data.NewValue);
+        }
+    );
 
-void UOverlayWidgetController::AttentionChanged(const FOnAttributeChangeData & Data) const
-{
-    OnAttentionChanged.Broadcast(Data.NewValue);
-}
-
-void UOverlayWidgetController::MaxAttentionChanged(const FOnAttributeChangeData & Data) const
-{
-    OnMaxAttentionChanged.Broadcast(Data.NewValue);
-}
-
-void UOverlayWidgetController::AdrenalineChanged(const FOnAttributeChangeData & Data) const
-{
-    OnAdrenalineChanged.Broadcast(Data.NewValue);
-}
-
-void UOverlayWidgetController::MaxAdrenalineChanged(const FOnAttributeChangeData & Data) const
-{
-    OnMaxAdrenalineChanged.Broadcast(Data.NewValue);
+    Cast<UMayajalaAbilitySystemComponent>(AbilitySystemComponent)->EffectAssetTags.AddLambda(
+        [this](const FGameplayTagContainer& AssetTags)
+        {
+            for (const FGameplayTag& Tag : AssetTags)
+            {
+                FGameplayTag MessageTag = FGameplayTag::RequestGameplayTag(FName("Message"));
+                if (Tag.MatchesTag(MessageTag))
+                {
+                    const FUIWidgetRow* Row = GetDataTableRowByTag<FUIWidgetRow>(MessageWidgetDataTable, Tag);
+                    MessageWidgetRowDelegate.Broadcast(*Row);
+                }
+            }
+        }
+    );
 }

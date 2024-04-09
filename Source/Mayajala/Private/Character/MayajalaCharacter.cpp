@@ -3,7 +3,6 @@
 #include "Character/MayajalaCharacter.h"
 #include "Player/MayajalaPlayerState.h"
 #include "AbilitySystem/MayajalaAbilitySystemComponent.h"
-#include "AbilitySystem/MayajalaAttributeSet.h"
 //#include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -80,8 +79,9 @@ void AMayajalaCharacter::InitAbilityActorInfo()
     AMayajalaPlayerState* MayajalaPlayerState = GetPlayerState<AMayajalaPlayerState>();
     check(MayajalaPlayerState);
     AbilitySystemComponent = MayajalaPlayerState->GetAbilitySystemComponent();
-    AttributeSet = MayajalaPlayerState->GetAttributeSet();
     AbilitySystemComponent->InitAbilityActorInfo(MayajalaPlayerState, this);
+    Cast<UMayajalaAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
+    AttributeSet = MayajalaPlayerState->GetAttributeSet();
 
     if (AMayajalaPlayerController* MayajalaPlayerController = Cast<AMayajalaPlayerController>(GetController()))
     {

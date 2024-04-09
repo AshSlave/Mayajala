@@ -23,3 +23,7 @@ void AMayajalaCharacterBase::BeginPlay()
 	Super::BeginPlay();
 	
 }
+
+void AMayajalaCharacterBase::InitAbilityActorInfo()
+{
+}

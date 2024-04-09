@@ -20,7 +20,7 @@ AMayajalaEnemy::AMayajalaEnemy()
 void AMayajalaEnemy::BeginPlay()
 {
     Super::BeginPlay();
-    AbilitySystemComponent->InitAbilityActorInfo(this, this);
+    InitAbilityActorInfo();
 }
 
 void AMayajalaEnemy::HighlightActor()
@@ -35,4 +35,10 @@ void AMayajalaEnemy::UnHighlightActor()
 {
     GetMesh()->SetRenderCustomDepth(false);
     Weapon->SetRenderCustomDepth(false);
+}
+
+void AMayajalaEnemy::InitAbilityActorInfo()
+{
+    AbilitySystemComponent->InitAbilityActorInfo(this, this);
+    Cast<UMayajalaAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
 }

@@ -77,6 +77,15 @@ void UMayajalaAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCa
 
     FEffectProperties Props;
     SetEffectProperties(Data, Props);
+
+    if (Data.EvaluatedData.Attribute == GetAttentionAttribute())
+    {
+        SetAttention(FMath::Clamp(GetAttention(), 0.f, GetMaxAttention()));
+    }
+    if (Data.EvaluatedData.Attribute == GetAdrenalineAttribute())
+    {
+        SetAdrenaline(FMath::Clamp(GetAdrenaline(), 0.f, GetMaxAdrenaline()));
+    }
 }
 
 void UMayajalaAttributeSet::OnRep_Attention(const FGameplayAttributeData OldAttention) const
