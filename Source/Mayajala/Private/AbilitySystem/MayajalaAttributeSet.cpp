@@ -10,20 +10,48 @@
 UMayajalaAttributeSet::UMayajalaAttributeSet()
 {
     InitAttention(0.5f);
-    InitMaxAttention(1.f);
     InitAdrenaline(10.f);
-    InitMaxAdrenaline(100.f);
 }
 
 void UMayajalaAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Attention, COND_None, REPNOTIFY_Always);
-    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, MaxAttention, COND_None, REPNOTIFY_Always);
+    // Primary Attributes
 
-    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Adrenaline, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Physique, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Intelligence, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Resilience, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Motorics, COND_None, REPNOTIFY_Always);
+
+    // Secondary Attributes
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Endurance, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Willpower, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Dexterity, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Perception, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Beauty, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Charisma, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Dodge, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Melee, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Throwing, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, PickPocket, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Prowling, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Gambling, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Haggle, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Medicine, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Persuasion, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Repair, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Firearms, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, PickLocks, COND_None, REPNOTIFY_Always);
     DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, MaxAdrenaline, COND_None, REPNOTIFY_Always);
+
+    // Core Attributes
+
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Attention, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Distraction, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Energy, COND_None, REPNOTIFY_Always);
+    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Adrenaline, COND_None, REPNOTIFY_Always);
 }
 
 void UMayajalaAttributeSet::PreAttributeChange(const FGameplayAttribute & Attribute, float & NewValue)
@@ -32,7 +60,7 @@ void UMayajalaAttributeSet::PreAttributeChange(const FGameplayAttribute & Attrib
 
     if (Attribute == GetAttentionAttribute())
     {
-        NewValue = FMath::Clamp(NewValue, 0.f, GetMaxAttention());
+        NewValue = FMath::Clamp(NewValue, 0.f, 1 - GetDistraction());
     }
     if (Attribute == GetAdrenalineAttribute())
     {
@@ -80,7 +108,7 @@ void UMayajalaAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCa
 
     if (Data.EvaluatedData.Attribute == GetAttentionAttribute())
     {
-        SetAttention(FMath::Clamp(GetAttention(), 0.f, GetMaxAttention()));
+        SetAttention(FMath::Clamp(GetAttention(), 0.f, 1 - GetDistraction()));
     }
     if (Data.EvaluatedData.Attribute == GetAdrenalineAttribute())
     {
@@ -93,14 +121,129 @@ void UMayajalaAttributeSet::OnRep_Attention(const FGameplayAttributeData OldAtte
     GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Attention, OldAttention);
 }
 
-void UMayajalaAttributeSet::OnRep_MaxAttention(const FGameplayAttributeData OldMaxAttention) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, MaxAttention, OldMaxAttention);
-}
-
 void UMayajalaAttributeSet::OnRep_Adrenaline(const FGameplayAttributeData OldAdrenaline) const
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Adrenaline, OldAdrenaline);
+}
+
+void UMayajalaAttributeSet::OnRep_Distraction(const FGameplayAttributeData OldDistraction) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Distraction, OldDistraction);
+}
+
+void UMayajalaAttributeSet::OnRep_Energy(const FGameplayAttributeData OldEnergy) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Energy, OldEnergy);
+}
+
+void UMayajalaAttributeSet::OnRep_Physique(const FGameplayAttributeData OldPhysique) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Physique, OldPhysique);
+}
+
+void UMayajalaAttributeSet::OnRep_Intelligence(const FGameplayAttributeData OldIntelligence) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Intelligence, OldIntelligence);
+}
+
+void UMayajalaAttributeSet::OnRep_Resilience(const FGameplayAttributeData OldResilience) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Resilience, OldResilience);
+}
+
+void UMayajalaAttributeSet::OnRep_Motorics(const FGameplayAttributeData OldMotorics) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Motorics, OldMotorics);
+}
+
+void UMayajalaAttributeSet::OnRep_Endurance(const FGameplayAttributeData OldEndurance) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Endurance, OldEndurance);
+}
+
+void UMayajalaAttributeSet::OnRep_Willpower(const FGameplayAttributeData OldWillpower) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Willpower, OldWillpower);
+}
+
+void UMayajalaAttributeSet::OnRep_Dexterity(const FGameplayAttributeData OldDexterity) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Dexterity, OldDexterity);
+}
+
+void UMayajalaAttributeSet::OnRep_Perception(const FGameplayAttributeData OldPerception) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Perception, OldPerception);
+}
+
+void UMayajalaAttributeSet::OnRep_Beauty(const FGameplayAttributeData OldBeauty) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Beauty, OldBeauty);
+}
+
+void UMayajalaAttributeSet::OnRep_Charisma(const FGameplayAttributeData OldCharisma) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Charisma, OldCharisma);
+}
+
+void UMayajalaAttributeSet::OnRep_Melee(const FGameplayAttributeData OldMelee) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Melee, OldMelee);
+}
+
+void UMayajalaAttributeSet::OnRep_Dodge(const FGameplayAttributeData OldDodge) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Dodge, OldDodge);
+}
+
+void UMayajalaAttributeSet::OnRep_Throwing(const FGameplayAttributeData OldThrowing) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Throwing, OldThrowing);
+}
+
+void UMayajalaAttributeSet::OnRep_PickPocket(const FGameplayAttributeData OldPickPocket) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, PickPocket, OldPickPocket);
+}
+
+void UMayajalaAttributeSet::OnRep_Prowling(const FGameplayAttributeData OldProwling) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Prowling, OldProwling);
+}
+
+void UMayajalaAttributeSet::OnRep_Gambling(const FGameplayAttributeData OldGambling) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Gambling, OldGambling);
+}
+
+void UMayajalaAttributeSet::OnRep_Haggle(const FGameplayAttributeData OldHaggle) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Haggle, OldHaggle);
+}
+
+void UMayajalaAttributeSet::OnRep_Medicine(const FGameplayAttributeData OldMedicine) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Medicine, OldMedicine);
+}
+
+void UMayajalaAttributeSet::OnRep_Persuasion(const FGameplayAttributeData OldPersuasion) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Persuasion, OldPersuasion);
+}
+
+void UMayajalaAttributeSet::OnRep_Repair(const FGameplayAttributeData OldRepair) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Repair, OldRepair);
+}
+
+void UMayajalaAttributeSet::OnRep_Firearms(const FGameplayAttributeData OldFirearms) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Firearms, OldFirearms);
+}
+
+void UMayajalaAttributeSet::OnRep_PickLocks(const FGameplayAttributeData OldPickLocks) const
+{
+    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, PickLocks, OldPickLocks);
 }
 
 void UMayajalaAttributeSet::OnRep_MaxAdrenaline(const FGameplayAttributeData OldMaxAdrenaline) const

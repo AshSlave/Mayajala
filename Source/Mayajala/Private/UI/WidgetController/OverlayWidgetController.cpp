@@ -9,40 +9,40 @@ void UOverlayWidgetController::BroadcastInitialValues()
 {
     const UMayajalaAttributeSet* MayajalaAttributeSet = CastChecked<UMayajalaAttributeSet>(AttributeSet);
     OnAttentionChanged.Broadcast(MayajalaAttributeSet->GetAttention());
-    OnMaxAttentionChanged.Broadcast(MayajalaAttributeSet->GetMaxAttention());
     OnAdrenalineChanged.Broadcast(MayajalaAttributeSet->GetAdrenaline());
     OnMaxAdrenalineChanged.Broadcast(MayajalaAttributeSet->GetMaxAdrenaline());
+    OnDistractionChanged.Broadcast(MayajalaAttributeSet->GetDistraction());
 }
 
 void UOverlayWidgetController::BindCallbacksToDependencies()
 {
     const UMayajalaAttributeSet* MayajalaAttributeSet = CastChecked<UMayajalaAttributeSet>(AttributeSet);
 
-    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate( MayajalaAttributeSet->GetAttentionAttribute()).AddLambda(
+    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(MayajalaAttributeSet->GetAttentionAttribute()).AddLambda(
         [this](const FOnAttributeChangeData& Data)
         {
             OnAttentionChanged.Broadcast(Data.NewValue);
         }
     );
 
-    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate( MayajalaAttributeSet->GetMaxAttentionAttribute()).AddLambda(
-        [this](const FOnAttributeChangeData& Data)
-        {
-            OnMaxAttentionChanged.Broadcast(Data.NewValue);
-        }
-    );
-
-    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate( MayajalaAttributeSet->GetAdrenalineAttribute()).AddLambda(
+    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(MayajalaAttributeSet->GetAdrenalineAttribute()).AddLambda(
         [this](const FOnAttributeChangeData& Data)
         {
             OnAdrenalineChanged.Broadcast(Data.NewValue);
         }
     );
 
-    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate( MayajalaAttributeSet->GetMaxAdrenalineAttribute()).AddLambda(
+    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(MayajalaAttributeSet->GetMaxAdrenalineAttribute()).AddLambda(
         [this](const FOnAttributeChangeData& Data)
         {
             OnMaxAdrenalineChanged.Broadcast(Data.NewValue);
+        }
+    );
+
+    AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(MayajalaAttributeSet->GetDistractionAttribute()).AddLambda(
+        [this](const FOnAttributeChangeData& Data)
+        {
+            OnDistractionChanged.Broadcast(Data.NewValue);
         }
     );
 

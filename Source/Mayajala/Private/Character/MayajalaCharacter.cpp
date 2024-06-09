@@ -90,6 +90,7 @@ void AMayajalaCharacter::InitAbilityActorInfo()
             MayajalaHUD->InitOverlay(MayajalaPlayerController, MayajalaPlayerState, AbilitySystemComponent, AttributeSet);
         }
     }
+    InitializeDefaultAttributes();
 }
 
 //void AMayajalaCharacter::BeginPlay()
