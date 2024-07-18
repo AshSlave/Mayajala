@@ -41,6 +41,9 @@ struct FEffectProperties
 	ACharacter* TargetCharacter = nullptr;
 };
 
+template<class T>
+using TStaticFuncPtr = typename TBaseStaticDelegateInstance<T, FDefaultDelegateUserPolicy>::FFuncPtr;
+
 /**
  * 
  */
@@ -54,6 +57,8 @@ class MAYAJALA_API UMayajalaAttributeSet : public UAttributeSet
 
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
+
+	TMap<FGameplayTag, TStaticFuncPtr<FGameplayAttribute()>> TagsToAttributes;
 
 	/**
 	 * Primary Attributes
@@ -122,10 +127,6 @@ class MAYAJALA_API UMayajalaAttributeSet : public UAttributeSet
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Prowling, Category = "Secondary Attributes")
 	FGameplayAttributeData Prowling;
 	ATTRIBUTE_ACCESSORS(UMayajalaAttributeSet, Prowling);
-
-	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Gambling, Category = "Secondary Attributes")
-	FGameplayAttributeData Gambling;
-	ATTRIBUTE_ACCESSORS(UMayajalaAttributeSet, Gambling);
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Haggle, Category = "Secondary Attributes")
 	FGameplayAttributeData Haggle;
@@ -231,9 +232,6 @@ class MAYAJALA_API UMayajalaAttributeSet : public UAttributeSet
 
 	UFUNCTION()
 	void OnRep_Prowling(const FGameplayAttributeData OldProwling) const;
-
-	UFUNCTION()
-	void OnRep_Gambling(const FGameplayAttributeData OldGambling) const;
 
 	UFUNCTION()
 	void OnRep_Haggle(const FGameplayAttributeData OldHaggle) const;

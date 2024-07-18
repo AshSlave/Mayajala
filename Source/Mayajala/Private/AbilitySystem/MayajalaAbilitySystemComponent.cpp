@@ -2,6 +2,7 @@
 
 
 #include "AbilitySystem/MayajalaAbilitySystemComponent.h"
+#include "MayajalaGameplayTags.h"
 
 void UMayajalaAbilitySystemComponent::AbilityActorInfoSet()
 {

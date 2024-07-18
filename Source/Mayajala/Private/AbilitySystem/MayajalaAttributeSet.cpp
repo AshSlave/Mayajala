@@ -6,11 +6,37 @@
 #include "GameFramework/Character.h"
 #include "GameplayEffectExtension.h"
 #include "Net/UnrealNetwork.h"
+#include "MayajalaGameplayTags.h"
 
 UMayajalaAttributeSet::UMayajalaAttributeSet()
 {
-    InitAttention(0.5f);
-    InitAdrenaline(10.f);
+    const FMayajalaGameplayTags& GameplayTags = FMayajalaGameplayTags::Get();
+
+    /* Primary Attributes */
+    TagsToAttributes.Add(GameplayTags.Attributes_Primary_Physique, GetPhysiqueAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Primary_Intelligence, GetIntelligenceAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Primary_Resilience, GetResilienceAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Primary_Motorics, GetMotoricsAttribute);
+
+    /* Secondary Attributes */
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Endurance, GetEnduranceAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Willpower, GetWillpowerAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Dexterity, GetDexterityAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Perception, GetPerceptionAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Beauty, GetBeautyAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Charisma, GetCharismaAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Dodge, GetDodgeAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Melee, GetMeleeAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Throwing, GetThrowingAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_PickPocket, GetPickPocketAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Prowling, GetProwlingAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Haggle, GetHaggleAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Medicine, GetMedicineAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Persuasion, GetPersuasionAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Repair, GetRepairAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_Firearms, GetFirearmsAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_PickLocks, GetPickLocksAttribute);
+    TagsToAttributes.Add(GameplayTags.Attributes_Secondary_ThrillThreshold, GetEnduranceAttribute);
 }
 
 void UMayajalaAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -37,7 +63,6 @@ void UMayajalaAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>
     DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Throwing, COND_None, REPNOTIFY_Always);
     DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, PickPocket, COND_None, REPNOTIFY_Always);
     DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Prowling, COND_None, REPNOTIFY_Always);
-    DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Gambling, COND_None, REPNOTIFY_Always);
     DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Haggle, COND_None, REPNOTIFY_Always);
     DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Medicine, COND_None, REPNOTIFY_Always);
     DOREPLIFETIME_CONDITION_NOTIFY(UMayajalaAttributeSet, Persuasion, COND_None, REPNOTIFY_Always);
@@ -209,11 +234,6 @@ void UMayajalaAttributeSet::OnRep_PickPocket(const FGameplayAttributeData OldPic
 void UMayajalaAttributeSet::OnRep_Prowling(const FGameplayAttributeData OldProwling) const
 {
     GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Prowling, OldProwling);
-}
-
-void UMayajalaAttributeSet::OnRep_Gambling(const FGameplayAttributeData OldGambling) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UMayajalaAttributeSet, Gambling, OldGambling);
 }
 
 void UMayajalaAttributeSet::OnRep_Haggle(const FGameplayAttributeData OldHaggle) const

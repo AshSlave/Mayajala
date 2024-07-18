@@ -4,6 +4,7 @@
 #include "UI/HUD/MayajalaHUD.h"
 #include "UI/Widget/MayajalaUserWidget.h"
 #include "UI/WidgetController/OverlayWidgetController.h"
+#include "UI/WidgetController/AttributeMenuWidgetController.h"
 
 UOverlayWidgetController * AMayajalaHUD::GetOverlayWidgetController(const FWidgetControllerParams & WCParams)
 {
@@ -14,6 +15,17 @@ UOverlayWidgetController * AMayajalaHUD::GetOverlayWidgetController(const FWidge
         OverlayWidgetController->BindCallbacksToDependencies();
     }
     return OverlayWidgetController;
+}
+
+UAttributeMenuWidgetController *AMayajalaHUD::GetAttributeMenuWidgetController(const FWidgetControllerParams &WCParams)
+{
+    if (AttributeMenuWidgetController == nullptr)
+    {
+        AttributeMenuWidgetController = NewObject<UAttributeMenuWidgetController>(this, AttributeMenuWidgetControllerClass);
+        AttributeMenuWidgetController->SetWidgetControllerParams(WCParams);
+        AttributeMenuWidgetController->BindCallbacksToDependencies();
+    }
+    return AttributeMenuWidgetController;
 }
 
 void AMayajalaHUD::InitOverlay(APlayerController * PC, APlayerState * PS, UAbilitySystemComponent * ASC, UAttributeSet * AS)
