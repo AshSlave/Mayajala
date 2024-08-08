@@ -5,7 +5,7 @@
 
 // Add default functionality here for any IActionInterface functions that are not pure virtual.
 
-float IActionInterface::GetDistraction()
+FVector IActionInterface::GetCombatSocketLocation()
 {
-    return 0.0f;
+    return FVector();
 }

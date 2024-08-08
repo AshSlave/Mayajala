@@ -3,6 +3,7 @@
 
 #include "Character/MayajalaCharacterBase.h"
 #include "AbilitySystemComponent.h"
+#include "AbilitySystem/MayajalaAbilitySystemComponent.h"
 
 AMayajalaCharacterBase::AMayajalaCharacterBase()
 {
@@ -25,6 +26,12 @@ void AMayajalaCharacterBase::BeginPlay()
 	
 }
 
+FVector AMayajalaCharacterBase::GetCombatSocketLocation()
+{
+	check(Weapon);
+    return Weapon->GetSocketLocation(WeaponTipSocketName);
+}
+
 void AMayajalaCharacterBase::InitAbilityActorInfo()
 {
 }
@@ -44,4 +51,12 @@ void AMayajalaCharacterBase::InitializeDefaultAttributes() const
 	ApplyEffectToSelf(DefaultPrimaryAttributes, 1);
 	ApplyEffectToSelf(DefaultSecondaryAttributes, 1);
 	ApplyEffectToSelf(DefaultCoreAttributes, 1);
+}
+
+void AMayajalaCharacterBase::AddCharacterAbilities()
+{
+	UMayajalaAbilitySystemComponent* MayajalaASC = CastChecked<UMayajalaAbilitySystemComponent>(AbilitySystemComponent);
+	if (!HasAuthority()) return;
+
+	MayajalaASC->AddCharacterAbilities(StartupAbilities);
 }

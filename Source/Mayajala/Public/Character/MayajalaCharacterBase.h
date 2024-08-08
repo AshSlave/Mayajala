@@ -5,14 +5,16 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
 #include "GameFramework/Character.h"
+#include "Interaction/ActionInterface.h"
 #include "MayajalaCharacterBase.generated.h"
 
 class UAbilitySystemComponent;
 class UAttributeSet;
 class UGameplayEffect;
+class UGameplayAbility;
 
 UCLASS(Abstract)
-class MAYAJALA_API AMayajalaCharacterBase : public ACharacter, public IAbilitySystemInterface
+class MAYAJALA_API AMayajalaCharacterBase : public ACharacter, public IAbilitySystemInterface, public IActionInterface
 {
 	GENERATED_BODY()
 
@@ -25,6 +27,11 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	TObjectPtr<USkeletalMeshComponent> Weapon;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	FName WeaponTipSocketName;
+
+	virtual FVector GetCombatSocketLocation() override;
 	
 	UPROPERTY();
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
@@ -45,4 +52,10 @@ protected:
 
 	void ApplyEffectToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float Level) const;
 	void InitializeDefaultAttributes() const;
+
+	void AddCharacterAbilities();
+private:
+
+	UPROPERTY(EditAnywhere, Category = "Abilities")
+	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 };
