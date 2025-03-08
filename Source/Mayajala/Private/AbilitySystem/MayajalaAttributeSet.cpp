@@ -134,6 +134,7 @@ void UMayajalaAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCa
     if (Data.EvaluatedData.Attribute == GetAttentionAttribute())
     {
         SetAttention(FMath::Clamp(GetAttention(), 0.f, 1 - GetDistraction()));
+        UE_LOG(LogTemp, Warning, TEXT("Changed Attention on %s, Attention: %f"), *Props.TargetAvatarActor->GetName(), GetAttention());
     }
     if (Data.EvaluatedData.Attribute == GetAdrenalineAttribute())
     {

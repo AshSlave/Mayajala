@@ -68,11 +68,9 @@ void AMayajalaPlayerController::AbilityInputTagPressed(FGameplayTag InputTag)
 
 void AMayajalaPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 {
-    if (!InputTag.MatchesTagExact(FMayajalaGameplayTags::Get().InputTag_LMB) || bTargeting)
-    {
-        if (GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
-    }
-    else
+    if (GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
+
+    if (InputTag.MatchesTagExact(FMayajalaGameplayTags::Get().InputTag_LMB) && !bTargeting && !bShiftKeyDown)
     {
         const APawn* ControlledPawn = GetPawn();
         if (FollowTime <= ShortPressThreshold && ControlledPawn)
@@ -95,7 +93,7 @@ void AMayajalaPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 
 void AMayajalaPlayerController::AbilityInputTagHeld(FGameplayTag InputTag)
 {
-    if (!InputTag.MatchesTagExact(FMayajalaGameplayTags::Get().InputTag_LMB) || bTargeting)
+    if (!InputTag.MatchesTagExact(FMayajalaGameplayTags::Get().InputTag_LMB) || bTargeting || bShiftKeyDown)
     {
         if (GetASC()) GetASC()->AbilityInputTagHeld(InputTag);
     }
@@ -147,6 +145,8 @@ void AMayajalaPlayerController::SetupInputComponent()
 
     UMayajalaInputComponent* MayajalaInputComponent = CastChecked<UMayajalaInputComponent>(InputComponent);
     MayajalaInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMayajalaPlayerController::Move);
+    MayajalaInputComponent->BindAction(ShiftAction, ETriggerEvent::Started, this, &AMayajalaPlayerController::ShiftPressed);
+    MayajalaInputComponent->BindAction(ShiftAction, ETriggerEvent::Completed, this, &AMayajalaPlayerController::ShiftReleased);
     MayajalaInputComponent->BindAbilityActions(InputConfig, this, &ThisClass::AbilityInputTagPressed, &ThisClass::AbilityInputTagReleased, &ThisClass::AbilityInputTagHeld);
 }
 

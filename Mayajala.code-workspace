@@ -6,7 +6,7 @@
 		},
 		{
 			"name": "UE5",
-			"path": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+			"path": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 		}
 	],
 	"settings": {
@@ -36,7 +36,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -56,7 +56,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -74,7 +74,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -91,7 +91,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -111,7 +111,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -129,7 +129,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -146,7 +146,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -166,7 +166,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -184,7 +184,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -201,7 +201,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -221,7 +221,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -239,7 +239,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -256,7 +256,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -276,7 +276,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -294,7 +294,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -311,7 +311,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -331,7 +331,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -349,7 +349,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -366,7 +366,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -386,7 +386,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -404,7 +404,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -421,7 +421,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -441,7 +441,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -459,7 +459,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -476,7 +476,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -496,7 +496,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -514,7 +514,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -531,7 +531,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -551,7 +551,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -569,7 +569,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -586,7 +586,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -606,7 +606,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -624,7 +624,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -641,7 +641,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -661,7 +661,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -679,7 +679,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -696,7 +696,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -716,7 +716,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			},
 			{
@@ -734,7 +734,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+					"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 				}
 			}
 		]
@@ -749,9 +749,9 @@
 				"preLaunchTask": "Mayajala Linux Debug Build",
 				"args": [
 				],
-				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2",
+				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4",
 				"type": "cppdbg",
-				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
 				"showDisplayString": true
 			},
 			{
@@ -761,9 +761,9 @@
 				"preLaunchTask": "Mayajala Linux DebugGame Build",
 				"args": [
 				],
-				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2",
+				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4",
 				"type": "cppdbg",
-				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
 				"showDisplayString": true
 			},
 			{
@@ -773,9 +773,9 @@
 				"preLaunchTask": "Mayajala Linux Development Build",
 				"args": [
 				],
-				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2",
+				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4",
 				"type": "cppdbg",
-				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
 				"showDisplayString": true
 			},
 			{
@@ -785,9 +785,9 @@
 				"preLaunchTask": "Mayajala Linux Test Build",
 				"args": [
 				],
-				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2",
+				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4",
 				"type": "cppdbg",
-				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
 				"showDisplayString": true
 			},
 			{
@@ -797,48 +797,48 @@
 				"preLaunchTask": "Mayajala Linux Shipping Build",
 				"args": [
 				],
-				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2",
+				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4",
 				"type": "cppdbg",
-				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
 				"showDisplayString": true
 			},
 			{
 				"name": "Launch MayajalaEditor (Debug)",
 				"request": "launch",
-				"program": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Binaries/Linux/UnrealEditor-Linux-Debug",
+				"program": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Binaries/Linux/UnrealEditor-Linux-Debug",
 				"preLaunchTask": "MayajalaEditor Linux Debug Build",
 				"args": [
 					"/home/sumire/Documents/Unreal Projects/Mayajala 5.4/Mayajala.uproject"
 				],
-				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2",
+				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4",
 				"type": "cppdbg",
-				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
 				"showDisplayString": true
 			},
 			{
 				"name": "Launch MayajalaEditor (DebugGame)",
 				"request": "launch",
-				"program": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Binaries/Linux/UnrealEditor-Linux-DebugGame",
+				"program": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Binaries/Linux/UnrealEditor-Linux-DebugGame",
 				"preLaunchTask": "MayajalaEditor Linux DebugGame Build",
 				"args": [
 					"/home/sumire/Documents/Unreal Projects/Mayajala 5.4/Mayajala.uproject"
 				],
-				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2",
+				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4",
 				"type": "cppdbg",
-				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
 				"showDisplayString": true
 			},
 			{
 				"name": "Launch MayajalaEditor (Development)",
 				"request": "launch",
-				"program": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Binaries/Linux/UnrealEditor",
+				"program": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Binaries/Linux/UnrealEditor",
 				"preLaunchTask": "MayajalaEditor Linux Development Build",
 				"args": [
 					"/home/sumire/Documents/Unreal Projects/Mayajala 5.4/Mayajala.uproject"
 				],
-				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2",
+				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4",
 				"type": "cppdbg",
-				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"visualizerFile": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
 				"showDisplayString": true
 			},
 			{
@@ -846,7 +846,7 @@
 				"type": "coreclr",
 				"request": "launch",
 				"preLaunchTask": "UnrealBuildTool Linux Development Build",
-				"program": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2/Engine/Build/BatchFiles/RunUBT.bat",
+				"program": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4/Engine/Build/BatchFiles/RunUBT.bat",
 				"args": [
 					"-projectfiles",
 					"-vscode",
@@ -858,7 +858,7 @@
 				"console": "internalConsole",
 				"internalConsoleOptions": "openOnSessionStart",
 				"stopAtEntry": false,
-				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.2"
+				"cwd": "/home/sumire/Documents/Unreal Engine/Linux_Unreal_Engine_5.4.4"
 			}
 		]
 	}

@@ -4,6 +4,8 @@
 #include "Character/MayajalaEnemy.h"
 #include "AbilitySystem/MayajalaAbilitySystemComponent.h"
 #include "AbilitySystem/MayajalaAttributeSet.h"
+#include "UI/Widget/MayajalaUserWidget.h"
+#include "Components/WidgetComponent.h"
 #include "Mayajala/Mayajala.h"
 
 AMayajalaEnemy::AMayajalaEnemy()
@@ -15,12 +17,32 @@ AMayajalaEnemy::AMayajalaEnemy()
     AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 
     AttributeSet = CreateDefaultSubobject<UMayajalaAttributeSet>("AttributeSet");
+
+    AttentionBar = CreateDefaultSubobject<UWidgetComponent>("AttentionBar");
+    AttentionBar->SetupAttachment(GetRootComponent());
 }
 
 void AMayajalaEnemy::BeginPlay()
 {
     Super::BeginPlay();
     InitAbilityActorInfo();
+
+    if (UMayajalaUserWidget* MayajalaUserWidget = Cast<UMayajalaUserWidget>(AttentionBar->GetUserWidgetObject()))
+    {
+        MayajalaUserWidget->SetWidgetController(this);
+    }
+
+    if (const UMayajalaAttributeSet* MayajalaAS = Cast<UMayajalaAttributeSet>(AttributeSet))
+    {
+        AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(MayajalaAS->GetAttentionAttribute()).AddLambda(
+            [this](const FOnAttributeChangeData& Data)
+            {
+                OnAttentionChanged.Broadcast(Data.NewValue);
+            }
+        );
+
+        OnAttentionChanged.Broadcast(MayajalaAS->GetAttention());
+    }
 }
 
 void AMayajalaEnemy::HighlightActor()
@@ -41,4 +63,6 @@ void AMayajalaEnemy::InitAbilityActorInfo()
 {
     AbilitySystemComponent->InitAbilityActorInfo(this, this);
     Cast<UMayajalaAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
+
+    InitializeDefaultAttributes();
 }
